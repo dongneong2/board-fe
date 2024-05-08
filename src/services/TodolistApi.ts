@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const url = "http://localhost:8080/todolist";
+const url = 'http://localhost:8080/todolist';
 
 export const getTodolist = async () => {
   const result = await axios.get(url);
@@ -13,15 +13,12 @@ export const createTodoItem = async (description: string) => {
       description: description,
     },
   });
-  console.log("result create", result);
 };
 
 export const updateTodoItem = async (id: number) => {
   const result = await axios.put(`${url}?id=${id}`);
-  console.log("result update", result);
 };
 
 export const deleteTodoItem = async (id: number) => {
   const result = await axios.delete(`${url}?id=${id}`);
-  console.log("result delete", result);
 };

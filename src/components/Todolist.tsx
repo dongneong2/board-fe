@@ -1,26 +1,26 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import {
   createTodoItem,
   deleteTodoItem,
   getTodolist,
   updateTodoItem,
-} from "../services/TodolistApi";
-import { TodolistModel } from "../models/Todolist";
+} from '../services/TodolistApi';
+import { TodolistModel } from '../models/Todolist';
 
 const Todolist = () => {
-  const [description, setDescription] = useState<string>("");
+  const [description, setDescription] = useState<string>('');
   const [todolist, setTodolist] = useState<TodolistModel[]>([]);
 
   const initTodolistData = async () => {
     const response = await getTodolist();
     if (response) {
       setTodolist(response);
-      setDescription("");
+      setDescription('');
     }
   };
 
   const handleRegistButton = async () => {
-    if (description != "") {
+    if (description != '') {
       await createTodoItem(description);
       initTodolistData();
     }
@@ -60,13 +60,13 @@ const Todolist = () => {
         todolist.map((data, index) => (
           <div key={index}>
             <br />
-            {index + 1}번째 할 일 :{" "}
+            {index + 1}번째 할 일 :{' '}
             <span
-              style={{ textDecoration: data.completed ? "line-through" : "" }}
+              style={{ textDecoration: data.completed ? 'line-through' : '' }}
             >
               {data.description}
             </span>
-            / {data.createdDate} /{" "}
+            / {data.createdDate} /{' '}
             <button
               onClick={() => {
                 handleCompleteButton(data.id);
@@ -74,7 +74,7 @@ const Todolist = () => {
             >
               완료
             </button>
-            /{" "}
+            /{' '}
             <button
               onClick={() => {
                 handleDeleteButton(data.id);
